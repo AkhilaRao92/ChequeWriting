@@ -151,8 +151,10 @@ public class ChequeWriting{
         rupee = process(rupee) + "RUPEES ";
         if(paise.length() > 2)
             rupee += "AND " + paise.toUpperCase()+"PAISE";
+            
+        rupee += " ONLY";
         
-		System.out.println(rupee);
+	System.out.println(rupee);
         
     }
 
