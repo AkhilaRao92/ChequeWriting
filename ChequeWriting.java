@@ -69,7 +69,7 @@ public class ChequeWriting{
     }
     
     
-    public static String numToStr(int amount) {
+    public static String printInIndianFormat(int amount) {
         String str = "";
         int highestPower = 0;
         
@@ -99,7 +99,7 @@ public class ChequeWriting{
                 else
                     str += oneToNineteen[ amount / highestPower] + numToWordMap.get(highestPower) ;
             
-            str += numToStr(amount % highestPower);
+            str += printInIndianFormat(amount % highestPower);
         }
         return str;
     }
@@ -131,11 +131,11 @@ public class ChequeWriting{
     {
         int quotient = s/100;
         int reminder = s%100;
-        return numToStr(s);
+        return printInIndianFormat(s);
         
     }
     
-    public static String printInWesternCurrency(int n)
+    public static String printInWesternFormat(int n)
     {
         Map<Integer, String> MultipleofTens = new HashMap(){{
             put(1000000000,"TRILLION ");
@@ -156,7 +156,7 @@ public class ChequeWriting{
             int d = Rupees/denom[j];
             if(d>0)
             {
-                RupeesInWords += numToStr(d) + MultipleofTens.get(denom[j]);
+                RupeesInWords += printInIndianFormat(d) + MultipleofTens.get(denom[j]);
             }
             
             Rupees = Rupees % denom[j];
@@ -170,7 +170,7 @@ public class ChequeWriting{
         paise = updatePaiseFormat(paise);
         paise = paiseWords(paise);
         String rupee = getRupee(amount);
-        rupee = printInWesternCurrency(Integer.parseInt(rupee));
+        rupee = printInWesternFormat(Integer.parseInt(rupee));
         rupee = fixAnd(rupee) + "RUPEES ";
         if(paise.length() > 2)
             rupee += "AND " + paise.toUpperCase()+"PAISE";
